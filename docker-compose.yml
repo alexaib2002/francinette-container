@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  francinette:
+    build: .
+    image: alexaib/francinette:1.0
