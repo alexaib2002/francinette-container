@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# arrange francinette inside container
+# Arrange filesystem layout
 cd /paco
-
-mv tester.sh paco
 
 if ! python3 -m venv venv ; then
     echo "Unknown error while generating the virtual envionment"
@@ -11,5 +9,5 @@ if ! python3 -m venv venv ; then
 fi
 
 . venv/bin/activate
-pip install wheel
+pip install wheel norminette
 pip install -r requirements.txt

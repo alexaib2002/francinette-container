@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+    francinette_image:
+        build: .
+        image: alexaib/francinette:1.0
+
+    paco:
+        depends_on: 'francinette_image'
+        image: alexaib/francinette:1.0
+        volumes:
+            - "${PROJECT_DIR}:/project"
