@@ -33,6 +33,19 @@ podman build -t francinette:latest .
 MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0
 ```
 
+* You can also pass any arguments to the Francinette executable!
+
+```
+MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0 <YOUR_ARGUMENTS_HERE>
+```
+
+Example:
+
+```
+# If the project being tested if libft, this will only test the 'strlcat' function
+MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0 strlcat
+```
+
 ## Todo
 
 - [ ] Support for colorful output (limitations of current base image)

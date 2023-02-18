@@ -8,4 +8,4 @@ Please specify a project directory properly and run again."""
     exit
 fi
 cd /project
-/paco/tester.sh
+/paco/tester.sh "$@"
