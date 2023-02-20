@@ -11,9 +11,15 @@ Install the following packages. You may want to take a look on your distro's rec
 
 Next, you'll need the container image. You may want to pull it directly from a registry, or build it locally yourself.
 
+For pulling the image from Docker Hub, do the following:
+
+```
+podman pull docker.io/alexaib/francinette:latest
+```
+
 ## Building the container image
 
-### 🐋 This step shouldn't be required once the image is available on a remote registry. 🐋
+### 🐋 This step is only required if you don't want to pull it from Docker Hub. 🐋
 
 Clone this repository and head up to the root directory of it with any terminal of your preference. Trigger the build via `podman build -t francinette:latest .`
 
@@ -30,20 +36,20 @@ podman build -t francinette:latest .
 * For just running Francinette tests directly and destroy the container afterwards:
 
 ```
-MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0
+MY_42PROJECT=/path/to/your/project && podman run --rm -t -v $MY_42PROJECT:/project docker.io/alexaib/francinette:latest
 ```
 
 * You can also pass any arguments to the Francinette executable!
 
 ```
-MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0 <YOUR_ARGUMENTS_HERE>
+MY_42PROJECT=/path/to/your/project && podman run --rm -t -v $MY_42PROJECT:/project docker.io/alexaib/francinette:latest <YOUR_ARGUMENTS_HERE>
 ```
 
 Example:
 
 ```
-# If the project being tested if libft, this will only test the 'strlcat' function
-MY_42PROJECT=/path/to/your/project && podman run --rm -v $MY_42PROJECT:/project localhost/francinette:1.0 strlcat
+# If you're testing libft, this will only test the 'strlcat' function
+MY_42PROJECT=/path/to/your/project && podman run --rm -t -v $MY_42PROJECT:/project docker.io/alexaib/francinette:latest strlcat
 ```
 
 ## FAQ
@@ -63,6 +69,6 @@ Thankfully, containers do exist, so we can let Francinette do whatever it wants 
 
 ## Todo
 
-- [ ] Support for colorful output (limitations of current base image)
+- [x] Support for colorful output (limitations of current base image)
 - [ ] MacOS/BSD-like environment inside the container (so tests won't give false positives/negatives), as francinette expects BSD libs and doesn't officially support Linux ones
 
